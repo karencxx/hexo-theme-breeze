@@ -1,0 +1,13 @@
+<div class="toc-wrapper collapsed">
+  <div class="toc-toggle">
+    <span class="toc-toggle-icon"></span>
+  </div>
+  <div class="toc-content">
+    <% if (toc(page.content).length > 0) { %>
+      <div class="toc-body">
+        <%- toc(page.content, {list_number: false}) %>
+      </div>
+    <% } %>
+  </div>
+</div>
+

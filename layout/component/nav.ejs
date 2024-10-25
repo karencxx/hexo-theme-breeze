@@ -1,0 +1,13 @@
+<header class="header-container <%= page.layout === 'post' ? 'post-header' : '' %>">
+    <div class="title">
+        <img src="/images/Icon-leaf.png" class="leaf-icon">
+        <a href="/"><%= config.title %></a>
+    </div>
+    <nav class="nav">
+        <ul>
+            <% for(name in theme.menu) { %>
+                <li><a href="<%- url_for(theme.menu[name]) %>" class="nav-item"><%= name %></a></li>
+            <% } %>
+          </ul>
+    </nav>
+</header>

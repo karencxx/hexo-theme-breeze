@@ -1,0 +1,99 @@
+.toc-wrapper
+  position: fixed
+  top: 0
+  left: 0
+  width: 260px
+  height: 100vh
+  background-color: #f0f7f4
+  transition: all 0.3s ease
+  z-index: 900
+  padding-bottom: 60px
+
+  &.collapsed
+    width: 2px
+
+    .toc-content
+      opacity: 0
+      pointer-events: none
+
+    .toc-toggle-icon
+      transform: rotate(180deg)
+
+  .toc-toggle
+    position: absolute
+    top: 50%
+    right: -20px
+    width: 20px
+    height: 40px
+    background-color: #f0f7f4
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 0 5px 5px 0
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1)
+
+  .toc-toggle-icon
+    width: 0
+    height: 0
+    border-top: 6px solid transparent
+    border-bottom: 6px solid transparent
+    border-right: 6px solid #286e34
+    transition: transform 0.3s ease
+
+  .toc-content
+    height: 100%
+    overflow-y: auto
+    padding: 20px
+    opacity: 1
+    transition: opacity 0.3s ease
+
+  .toc-header
+    margin-bottom: 15px
+
+  .toc-title
+    font-size: 18px
+    font-weight: bold
+    color: #286e34
+
+  .toc-body
+    font-size: 14px
+
+    ol
+      list-style-type: none
+      padding-left: 15px
+
+    li
+      margin-bottom: 8px
+
+    a
+      color: #030303
+      text-decoration: none
+      display: block
+      padding: 5px
+      transition: all 0.3s ease-in-out
+      border-radius: 4px
+
+      &:hover
+        transform: scale(1.2)
+      
+      &.active
+        color: #fff
+        background-color: #286e34
+
+        &:hover
+          transform: scale(1) translateX(0)
+
+.post
+  margin-left: 270px
+  transition: margin-left 0.3s ease
+
+  &.toc-collapsed
+    margin-left: 60px
+
+@media (max-width: 768px)
+  .toc-wrapper
+    display: none
+
+  .post
+    margin-left: 0

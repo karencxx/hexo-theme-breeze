@@ -1,0 +1,37 @@
+<aside class="sidebar <%= is_post() ? 'post-sidebar' : '' %>">
+    <div class="sidebar-section search-section">
+      <form class="search-form" action="//google.com/search" method="get" accept-charset="UTF-8" target="_blank">
+        <input type="search" name="q" class="search-input" placeholder="Search...">
+        <input type="hidden" name="sitesearch" value="<%= config.url %>">
+      </form>
+    </div>
+  
+    <div class="sidebar-section category-section">
+      <h3 class="sidebar-title">Categories</h3>
+      <ul class="category-list">
+        <% site.categories.sort('name').each(function(category) { %>
+          <li class="category-item">
+            <a href="<%= url_for(category.path) %>">
+              <%= category.name %> (<%= category.length %>)
+            </a>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  
+    <div class="sidebar-section tag-section">
+      <h3 class="sidebar-title">Tags</h3>
+      <%- partial('component/tagcloud') %>
+    </div>
+  </aside>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var tagItems = document.querySelectorAll('.tag-item');
+      var fontSizes = ['f12', 'f13', 'f14', 'f15', 'f16'];
+      tagItems.forEach(function(item) {
+        var randomSize = fontSizes[Math.floor(Math.random() * fontSizes.length)];
+        item.classList.add('tag-' + randomSize);
+      });
+    });
+  </script>

@@ -1,0 +1,12 @@
+<% if (site.tags.length) { %>
+  <div class="tagcloud">
+    <%- tagcloud({
+      min_font: 16, 
+      max_font: 34, 
+      amount: 100,  // 增加显示的标签数量
+      color: true, 
+      start_color: '#a1e048', 
+      end_color: '#045d56'
+    }) %>
+  </div>
+<% } %>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+    <%- partial('component/head') %>    
+  <body>
+    <div class="container">
+      <%- partial('component/nav') %>
+      <div class="main-content">
+        <% if (is_home() || is_archive()) { %>
+          <%- partial('component/post-list') %>
+        <% } else if (is_post()) { %>
+          <%- partial('component/post') %>
+        <% } else { %>
+          <%- partial('component/post-list') %>
+        <% } %>
+        <%- is_post() ? '' : partial('component/sidebar') %>
+      </div>
+      <%- partial('component/footer') %>
+    </div>
+    <button id="back-to-top" title="回到顶部">↑</button>
+  </body>
+</html>

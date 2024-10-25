@@ -1,0 +1,179 @@
+// 重置一些基本样式
+:root
+  --some-variable: initial
+  --another-variable: unset
+  
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html, body
+  height: 100%
+
+body
+  display: flex
+  flex-direction: column
+  font-size: 16px
+  line-height: 1.5
+  color: #030303
+  font-family: -apple-system, Lexend Deca, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
+  background-color: #fff
+
+.container
+  display: flex
+  flex-direction: column
+  height: 100%
+
+  // 主要内容区域应该占据所有可用空间
+  .main-content
+    display: flex
+    flex: 1 0 auto
+
+a
+  text-decoration: none
+  transition: color 0.3s ease
+
+  &:-webkit-any-link
+    color: inherit
+
+  &:hover
+    color: #286e34
+    transition: color 0.4s ease
+  
+// 标题样式
+h1, h2, h3, h4, h5, h6
+  margin-bottom: 0.2em
+  font-weight: 500
+  line-height: 1.2
+
+h1
+  font-size: 2.5em
+
+h2
+  font-size: 2em
+
+h3
+  font-size: 1.5em
+
+h4
+  font-size: 1.25em
+
+h5
+  font-size: 1em
+
+h6
+  font-size: 0.75em
+
+// 列表样式
+ul, ol
+  list-style: none
+
+// 图片样式
+img
+  max-width: 100%
+  height: auto
+
+figure.highlight
+  overflow: auto
+  position: relative
+
+figure.highlight, pre
+  line-height: 1.6
+  margin: 0 auto 20px
+
+pre 
+  overflow: auto
+
+#back-to-top
+  display: none
+  position: fixed
+  bottom: 60px
+  right: 20px
+  z-index: 99
+  border: none
+  outline: none
+  color: #f0f7f4
+  background-color: #286e34
+  cursor: pointer
+  padding: 10px 14px
+  font-size: 18px
+  transition: opacity 0.3s linear
+  opacity: 0.7
+
+  &:hover
+    opacity: 1
+
+// 添加媒体查询和响应式设计
+@media screen and (max-width: 768px)
+  body
+    font-size: 14px
+
+  h1
+    font-size: 2em
+
+  h2
+    font-size: 1.75em
+
+  h3
+    font-size: 1.5em
+
+@media screen and (max-width: 480px)
+  body
+    font-size: 13px
+
+  h1
+    font-size: 1.75em
+
+  h2
+    font-size: 1.5em
+
+  h3
+    font-size: 1.25em
+
+// 添加弹性布局的响应式调整
+.flex-container
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+  @media screen and (max-width: 768px)
+    flex-direction: column
+
+.flex-item
+  flex: 1 1 300px
+  margin: 10px
+
+  @media screen and (max-width: 768px)
+    flex: 1 1 100%
+
+// 图片响应式处理
+.responsive-image
+  max-width: 100%
+  height: auto
+
+// 导航栏响应式设计
+nav
+  @media screen and (max-width: 768px)
+    .nav-links
+      display: none
+
+    .menu-icon
+      display: block
+
+// 添加一个汉堡菜单图标
+.menu-icon
+  display: none
+  cursor: pointer
+  padding: 10px
+
+  @media screen and (max-width: 768px)
+    display: block
+
+@import 'nav.styl'
+@import 'content.styl'
+@import 'footer.styl'
+@import 'sidebar.styl'
+@import 'gallery.styl'
+@import 'markdown.styl'
+@import 'tagcloud.styl'

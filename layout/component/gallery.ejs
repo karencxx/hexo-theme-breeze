@@ -1,0 +1,30 @@
+<% if (page.photos && page.photos.length) { %>
+  <div class="gallery-container">
+    <% page.photos.forEach(function(photo, index) { %>
+      <div class="gallery-item">
+        <img src="<%= photo %>" alt="Gallery image <%= index + 1 %>" onclick="openModal(this.src)">
+      </div>
+    <% }); %>
+  </div>
+
+  <!-- Modal for full-size images -->
+  <div id="imageModal" class="modal" onclick="closeModal(e)">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <script>
+    function openModal(src) {
+      var modal = document.getElementById("imageModal");
+      var modalImg = document.getElementById("modalImage");
+      modal.style.display = "block";
+      modalImg.src = src;
+    }
+
+    function closeModal(e) {
+      if(e.target.id === 'modalImage') return;
+      var modal = document.getElementById("imageModal");
+      modal.style.display = "none";
+    }
+  </script>
+<% } %>

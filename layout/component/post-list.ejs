@@ -1,0 +1,36 @@
+<% if (page && page.posts && page.posts.length) { %>
+<div class="post-list">
+    <% 
+    let postsByYear = {};
+    page.posts.sort('date', -1).forEach(function(post) {
+      let year = date(post.date, 'YYYY');
+      if (!postsByYear[year]) {
+        postsByYear[year] = [];
+      }
+      postsByYear[year].push(post);
+    });
+
+    Object.keys(postsByYear).sort((a, b) => b - a).forEach(function(year) { 
+    %>
+      <div class="year-section">
+        <div class="year-title">
+            <img src="/images/Icon-eco.png" class="leaf-icon">
+        </div>
+        <% postsByYear[year].forEach(function(post) { %>
+          <div class="post-item">
+            <h3 class="post-title">
+              <a href="<%= url_for(post.path) %>"><%= post.title || 'Untitled' %></a>
+            </h3>
+            <div class="post-meta">
+              <time datetime="<%= post.date.toISOString() %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% }); %>
+</div>
+<% } else { %>
+<div class="empty-list">
+    No posts found.
+</div>
+<% } %>

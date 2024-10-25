@@ -1,0 +1,23 @@
+
+# html lang
+language: en
+
+# main menu navigation
+menu:
+  # Home: /
+  Archives: /archives
+  # Contact: /contact
+  About: /about
+
+# stylesheets loaded in the <head>
+stylesheets:
+- /css/breeze.css
+
+# scripts loaded in the end of the body
+scripts:
+- /js/breeze.js
+
+copyright:
+  enable: true
+  # text: 'Copyright © {{ date('YYYY') }} {{ config.title }}. All rights reserved.'
+  link: '{{ config.url }}'

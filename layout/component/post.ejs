@@ -1,0 +1,32 @@
+<% var tocLength = toc(page.content).length %>
+<% if (tocLength > 0 && !global.isMobile) { %>
+<aside class="post-toc">
+    <%- partial('component/toc') %>
+</aside>
+<% } %>
+<article class="post-detail <%= tocLength > 0 && !global.isMobile ? 'has-toc toc-collapsed' : '' %>">
+    <div class="post-title-container">
+        <h1 class="post-title"><%= page.title || 'Untitled' %></h1>
+    </div>
+    <div class="post-meta">
+        <time datetime="<%= page.date.toISOString() %>"><%= date(page.date, 'YYYY-MM-DD') %></time>
+        <% if (page.tags && page.tags.length) { %>
+          <div class="post-tags">
+            <% page.tags.forEach(function(tag) { %>
+              <a href="<%= url_for(tag.path) %>" class="post-tag"><%= tag.name %></a>
+            <% }); %>
+          </div>
+        <% } %>
+        <% if (page.categories && page.categories.length) { %>
+          <div class="post-categories">
+            <% page.categories.forEach(function(category) { %>
+              <a href="<%= url_for(category.path) %>" class="post-category"><%= category.name %></a>
+            <% }); %>
+          </div>
+        <% } %>
+  </div>
+  <div class="post-content">
+    <%- partial('component/gallery') %>
+    <%- page.content %>
+  </div>
+</article>

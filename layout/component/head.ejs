@@ -1,0 +1,48 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= page.title ? `${page.title} | ${config.title}` : config.title %></title>
+    <link rel="stylesheet" href="<%- url_for('/css/breeze.css') %>">
+    <script src="<%- url_for('/js/toc.js') %>"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('back-to-top');
+
+            // 当页面滚动超过 300px 时显示按钮
+            window.onscroll = function() {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopButton.style.display = "block";
+                } else {
+                backToTopButton.style.display = "none";
+                }
+            };
+            
+            // 点击按钮时平滑滚动回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = function() {
+                    const c = document.documentElement.scrollTop || document.body.scrollTop;
+                    if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                    }
+                };
+                scrollToTop();
+            });
+        });
+        window.isMobile = /mobile|android|iphone|ipad|phone/i.test(navigator.userAgent);
+    </script>
+
+    <%
+    // 在服务器端定义 isMobile 函数
+    function isMobile() {
+        const userAgent = config.user_agent || '';
+        return /mobile|android|iphone|ipad|phone/i.test(userAgent);
+    }
+
+    // 将 isMobile 作为全局变量
+    if (typeof global === 'undefined') {
+        global = {};
+    }
+    global.isMobile = isMobile();
+    %>
+</head>
