@@ -1,29 +1,50 @@
-# Breeze 主题
+# Breeze Theme for Hexo
 
-## 项目介绍
+Breeze 是一个简洁、响应式的 Hexo 博客主题，专注于提供良好的阅读体验。
 
-Breeze 是一个为 Hexo 博客框架开发的主题。它旨在提供一个清新、简洁且功能丰富的博客主题。
+## 特性
 
-## 主要特性
+- 响应式设计，适配各种设备
+- 简洁优雅的布局
+- 支持文章目录
+- 集成评论系统（可选）
+- 支持代码高亮
+- 支持标签云
+- 支持归档页面
 
-1. 响应式设计：适应不同屏幕尺寸的设备
-2. 文章目录（TOC）：在文章页面侧边栏显示
-3. 标签云：展示博客中使用的所有标签
-4. 返回顶部按钮：方便长页面的导航
-5. 代码高亮：支持多种编程语言的语法高亮
-6. Markdown 样式：优化的 Markdown 渲染样式
+## 安装
 
-## 文件结构
+1. 在您的 Hexo 博客根目录下，通过 git 克隆本主题：
 
-- `themes/breeze/`: 主题文件夹
-  - `layout/`: 布局模板
-  - `source/`: 静态资源
-    - `css/`: 样式文件
-    - `js/`: JavaScript 文件
+   ```bash
+   git clone https://github.com/karencxx/hexo-theme-breeze.git themes/breeze
+   ```
 
-## 开发与贡献
+2. 修改 Hexo 博客根目录下的 `_config.yml` 文件，将主题设置为 breeze：
 
-欢迎贡献代码或提出建议。请确保在提交更改前运行测试并通过所有检查。
+   ```yaml
+   theme: breeze
+   ```
 
-## 许可证
+## 配置
+
+
+
+## 使用
+
+1. 生成并预览您的博客：
+
+   ```bash
+   hexo clean && hexo generate && hexo server
+   ```
+
+2. 在浏览器中访问 `http://localhost:4000(你的端口号)` 查看效果。
+
+## 自定义
+
+
+
+## 贡献
+
+欢迎提交 issues 或 pull requests 来改进这个主题。
 
