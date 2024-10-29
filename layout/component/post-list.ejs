@@ -1,36 +1,51 @@
-<% if (page && page.posts && page.posts.length) { %>
-<div class="post-list">
-    <% 
-    let postsByYear = {};
-    page.posts.sort('date', -1).forEach(function(post) {
-      let year = date(post.date, 'YYYY');
-      if (!postsByYear[year]) {
-        postsByYear[year] = [];
-      }
-      postsByYear[year].push(post);
-    });
 
-    Object.keys(postsByYear).sort((a, b) => b - a).forEach(function(year) { 
-    %>
-      <div class="year-section">
-        <div class="year-title">
-            <img src="/images/Icon-eco.png" class="leaf-icon">
-        </div>
-        <% postsByYear[year].forEach(function(post) { %>
-          <div class="post-item">
-            <h3 class="post-title">
-              <a href="<%= url_for(post.path) %>"><%= post.title || 'Untitled' %></a>
-            </h3>
-            <div class="post-meta">
-              <time datetime="<%= post.date.toISOString() %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
-            </div>
+  <% if (page.posts && page.posts.length > 0) { %>
+  <div class="post-list">
+      <% 
+      let postsByYear = {};
+      page.posts.sort('date', -1).forEach(function(post) {
+        let year = date(post.date, 'YYYY');
+        if (!postsByYear[year]) {
+          postsByYear[year] = [];
+        }
+        postsByYear[year].push(post);
+      });
+
+      Object.keys(postsByYear).sort((a, b) => b - a).forEach(function(year) { 
+      %>
+        <div class="year-section">
+          <div class="year-title">
+              <img src="/images/Icon-eco.png" class="leaf-icon">
           </div>
-        <% }); %>
-      </div>
-    <% }); %>
-</div>
-<% } else { %>
-<div class="empty-list">
-    No posts found.
-</div>
-<% } %>
+          <% postsByYear[year].forEach(function(post) { %>
+            <div class="post-item">
+              <h4 class="post-title">
+                <a href="<%= url_for(post.path) %>"><%= post.title || 'Untitled' %></a>
+              </h4>
+              <div class="post-meta">
+                <time datetime="<%= post.date.toISOString() %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      <% }); %>
+
+
+       <!-- 分页导航 -->
+    <% if (page.total > 1) { %>
+      <nav class="pagination-wrapper">
+          <div class="pagination">
+              <%- paginator({
+                prev_text: '&laquo; Previous',
+                next_text: 'Next &raquo;',
+                escape: false
+              }) %>
+          </div>
+      </nav>
+    <% } %>
+  </div>
+  <% } else { %>
+  <div class="empty-list">
+      No posts found.
+  </div>
+  <% } %>
